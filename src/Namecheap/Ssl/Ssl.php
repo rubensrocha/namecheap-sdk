@@ -92,10 +92,10 @@ class Ssl extends Api {
 	/**
 	 *@todo Activates a purchased and non-activated SSL certificate by collecting and validating certificate request data and submitting it to Comodo.
 	 *
-	 * @param num|CertificateID|req : Unique identifier of SSL certificate to be activated
-	 * @param str|CSR|req : Certificate Signing Request (CSR)
-	 * @param str|AdminEmailAddress|req : Email address to send signed SSL certificate file to
-	 * @param str|WebServerType|opt : Server software where SSL will be installed. Defines SSL certificate file format (PEM or PKCS7). Allowed values: apacheopenssl, apachessl, apacheraven, apachessleay, apache2, apacheapachessl, tomcat, cpanel, ipswitch, plesk, weblogic, website, webstar, nginx, iis, iis4, iis5, c2net, ibmhttp, iplanet, domino, dominogo4625, dominogo4626, netscape, zeusv3, cobaltseries, ensim, hsphere, other
+	 * num|CertificateID|req : Unique identifier of SSL certificate to be activated
+	 * str|CSR|req : Certificate Signing Request (CSR)
+	 * str|AdminEmailAddress|req : Email address to send signed SSL certificate file to
+	 * str|WebServerType|opt : Server software where SSL will be installed. Defines SSL certificate file format (PEM or PKCS7). Allowed values: apacheopenssl, apachessl, apacheraven, apachessleay, apache2, apacheapachessl, tomcat, cpanel, ipswitch, plesk, weblogic, website, webstar, nginx, iis, iis4, iis5, c2net, ibmhttp, iplanet, domino, dominogo4625, dominogo4626, netscape, zeusv3, cobaltseries, ensim, hsphere, other
 	 *
 	 * ## Command can be run on purchased and non-activated SSLs in "Newpurchase" or "Newrenewal" status. Use getInfo and getList APIs to collect SSL status.
 	 * ## Only supported products can be activated. See create API to learn supported products.
