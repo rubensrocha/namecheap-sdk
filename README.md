@@ -12,28 +12,11 @@ Namecheap SDK is a PHP lib that makes it easy to manage Namecheap APIs.
 The recommended way to install Namecheap-sdk is through
 [Composer](http://getcomposer.org).
 
-```bash
-# Install Composer
-curl -sS https://getcomposer.org/installer | php
-```
-
 Next, run the Composer command to install the latest stable version of Namecheap-sdk:
 
 ```bash
-php composer.phar require rubensrocha/namecheap-sdk
+composer require rubensrocha/namecheap-sdk
 ```
-
-After installing, you need to require Composer's autoloader:
-
-```php
-require 'vendor/autoload.php';
-```
-
-You can then later update namecheap-sdk using composer:
-
- ```bash
-composer.phar update
- ```
 
 ## API Methods Examples:
 
