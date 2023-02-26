@@ -109,7 +109,7 @@ curl -sS https://getcomposer.org/installer | php
 Next, run the Composer command to install the latest stable version of Namecheap-sdk:
 
 ```bash
-php composer.phar require saddamrhossain/namecheap-sdk
+php composer.phar require rubensrocha/namecheap-sdk
 ```
 
 After installing, you need to require Composer's autoloader:
@@ -129,4 +129,4 @@ composer.phar update
 
 | Version | Status     | Packagist           | Namespace    | Repo                | Docs                | PSR-7 | PHP Version |
 |---------|------------|---------------------|--------------|---------------------|---------------------|-------|-------------|
-| 1.x     | ---        | `saddamrhossain/namecheap-sdk`     | `Namecheap`     | - | - | No    | >= 5.6    |
+| 1.x     | ---        | `rubensrocha/namecheap-sdk`     | `Namecheap`     | - | - | No    | >= 5.6    |
