@@ -1,9 +1,9 @@
 Namecheap SDK for APIs
 =======================
 
-[![Latest Version](https://img.shields.io/badge/release-v1.0-blue.svg)]()
-[![Build Status](https://img.shields.io/badge/build-error-lightgrey.svg)]()
-[![Total Downloads](https://img.shields.io/badge/downloads-1k-green.svg)]()
+<a href="https://packagist.org/packages/rubensrocha/namecheap-sdk"><img src="https://poser.pugx.org/rubensrocha/namecheap-sdk/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/rubensrocha/namecheap-sdk"><img src="https://poser.pugx.org/rubensrocha/namecheap-sdk/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/rubensrocha/namecheap-sdk"><img src="https://poser.pugx.org/rubensrocha/namecheap-sdk/license.svg" alt="License"></a>
 
 Namecheap SDK is a PHP lib that makes it easy to manage Namecheap APIs.
 
