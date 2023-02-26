@@ -145,7 +145,8 @@ class Api {
         if ($this->returnType === 'json') {
         	return json_encode(Xml::createArray($xmlData));
         } else if ($this->returnType === 'array') {
-        	return Xml::createArray($xmlData);
+        	$xml = simplexml_load_string($xmlData);
+			return json_decode(json_encode($xml), true);
         }
         return $xmlData;
 	}
