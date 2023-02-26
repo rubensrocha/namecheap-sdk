@@ -19,12 +19,12 @@ class DomainsNs extends Api {
 	protected $command = 'namecheap.domains.ns.';
 
 	/**
-	 * @todo Creates a new nameserver.
+	 * Creates a new nameserver.
 	 *
-	 * @param str|SLD|req : SLD of the DomainName
-	 * @param str|TLD|req : TLD of the DomainName
-	 * @param str|Nameserver|req : Nameserver to create
-	 * @param str|IP|req : Nameserver IP address
+	 * @param $sld str|SLD|req : SLD of the DomainName
+	 * @param $tld str|TLD|req : TLD of the DomainName
+	 * @param $ns str|Nameserver|req : Nameserver to create
+	 * @param $ip str|IP|req : Nameserver IP address
 	 */
 	public function create($sld, $tld, $ns, $ip) {
 		$data = ['SLD' => $sld, 'TLD' => $tld, 'Nameserver' => $ns, 'IP' => $ip];
@@ -32,10 +32,11 @@ class DomainsNs extends Api {
 	}
 
 	/**
-	 * @todo Deletes a nameserver associated with the requested domain.
-	 * @param str|SLD|Req : SLD of the DomainName
-	 * @param str|TLD|Req : TLD of the DomainName
-	 * @param str|Nameserver|Req : Nameserver to delete
+	 * Deletes a nameserver associated with the requested domain.
+	 * 
+	 * @param $sld str|SLD|req : SLD of the DomainName
+	 * @param $tld str|TLD|req : TLD of the DomainName
+	 * @param $ns str|Nameserver|req : Nameserver to create
 	 */
 	public function delete($sld, $tld, $ns) {
 		$data = ['SLD' => $sld, 'TLD' => $tld, 'Nameserver' => $ns];
@@ -43,10 +44,11 @@ class DomainsNs extends Api {
 	}
 
 	/**
-	 * @todo Retrieves information about a registered nameserver.
-	 * @param str|SLD|Req : SLD of the DomainName
-	 * @param str|TLD|Req : TLD of the DomainName
-	 * @param str|Nameserver|Req : Nameserver
+	 * Retrieves information about a registered nameserver.
+	 * 
+	 * @param $sld str|SLD|req : SLD of the DomainName
+	 * @param $tld str|TLD|req : TLD of the DomainName
+	 * @param $ns str|Nameserver|req : Nameserver to create
 	 */
 	public function getInfo($sld, $tld, $ns) {
 		$data = ['SLD' => $sld, 'TLD' => $tld, 'Nameserver' => $ns];
@@ -54,12 +56,13 @@ class DomainsNs extends Api {
 	}
 
 	/**
-	 * @todo Updates the IP address of a registered nameserver.
-	 * @param str|SLD|Req : SLD of the Domain Name
-	 * @param str|TLD|Req : TLD of the Domain Name
-	 * @param str|Nameserver|Req : Nameserver
-	 * @param str|OldIP|Req : Existing IP address
-	 * @param str|IP|Req : New IP address
+	 * Updates the IP address of a registered nameserver.
+	 * 
+	 * @param $sld str|SLD|req : SLD of the DomainName
+	 * @param $tld str|TLD|req : TLD of the DomainName
+	 * @param $ns str|Nameserver|req : Nameserver to create
+	 * @param $oldIp str|OldIP|Req : Existing IP address
+	 * @param $ip str|IP|Req : New IP address
 	 */
 	public function update($sld, $tld, $ns, $oldIp, $ip) {
 		$data = ['SLD' => $sld, 'TLD' => $tld, 'Nameserver' => $ns, 'OldIP' => $oldIp, 'IP' => $ip];

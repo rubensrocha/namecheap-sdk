@@ -135,7 +135,7 @@ class Api {
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         if (in_array($http_code, [401, 403])) {
-            throw new UnauthorizedException('No Permission to perform this request');
+            throw new \Exception('No Permission to perform this request');
         }
 
         if(!empty($error)) {

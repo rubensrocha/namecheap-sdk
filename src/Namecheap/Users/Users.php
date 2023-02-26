@@ -19,13 +19,13 @@ class Users extends Api {
 	protected $command = 'namecheap.users.';
 
 	/**
-	 * @todo Returns pricing information for a requested product type.
+	 * Returns pricing information for a requested product type.
 	 *
-	 * @param str|ProductType|req : Product Type to get pricing information
-	 * @param str|ProductCategory|opt : Specific category within a product type
-	 * @param str|PromotionCode|opt : Promotional (coupon) code for the user
-	 * @param str|ActionName|opt : Specific action within a product type
-	 * @param str|ProductName|opt : The name of the product within a product type
+	 * @param $productType str|ProductType|req : Product Type to get pricing information
+	 * @param $productCategory str|ProductCategory|opt : Specific category within a product type
+	 * @param $promotionCode str|PromotionCode|opt : Promotional (coupon) code for the user
+	 * @param $actionName str|ActionName|opt : Specific action within a product type
+	 * @param $productName str|ProductName|opt : The name of the product within a product type
 	 * 
 	 * @note : Possible values for ProductType, ProductCategory, ActionName and ProductName parameters:
 	 * DOMAIN : ActionName -> REGISTER,RENEW,REACTIVATE,TRANSFER
@@ -44,16 +44,17 @@ class Users extends Api {
 	}
 
 	/**
-	 * @todo Gets information about fund in the user's account.This method returns the following information: Available Balance, Account Balance, Earned Amount, Withdrawable Amount and Funds Required for AutoRenew.
+	 * Gets information about fund in the user's account.This method returns the following information: Available Balance, Account Balance, Earned Amount, Withdrawable Amount and Funds Required for AutoRenew.
 	 */
 	public function getBalances() {
 		return $this->get($this->command.__FUNCTION__);
 	}
 
 	/**
-	 * @todo Changes password of the particular user's account.
-	 * @param str|OldPassword/ResetCode| req : Old password of the user/The password reset code you get after calling namecheap.users.resetpassword API
-	 * @param str|NewPassword|req : New password of the user
+	 * Changes password of the particular user's account.
+	 * @param $oldPasswordOrResetCode str|OldPassword/ResetCode| req : Old password of the user/The password reset code you get after calling namecheap.users.resetpassword API
+	 * @param $newPassword str|NewPassword|req : New password of the user
+	 * @param $resetPass bool : reset password
 	 */
 	public function changePassword($oldPasswordOrResetCode, $newPassword, $resetPass=false) {
 		if ($resetPass) {
@@ -66,23 +67,24 @@ class Users extends Api {
 	}
 
 	/**
-	 * @todo Updates user account information for the particular user.
+	 * Updates user account information for the particular user.
 	 *
-	 * @param str|FirstName|req 	: First name of the user
-	 * @param str|LastName|req 		: Last name of the user
-	 * @param str|Address1|req 		: StreetAddress1 of the user
-	 * @param str|City|req 			: City of the user
-	 * @param str|StateProvince|req : State/Province of the user
-	 * @param str|Zip|req 			: Zip/Postal code of the user
-	 * @param str|Country|req 		: Two letter country code of the user
-	 * @param str|EmailAddress|req 	: Email address of the user
-	 * @param str|Phone|req 		: Phone number in the format +NNN.NNNNNNNNNN
+	 * @param $param array
+	 * str|FirstName|req 	: First name of the user
+	 * str|LastName|req 		: Last name of the user
+	 * str|Address1|req 		: StreetAddress1 of the user
+	 * str|City|req 			: City of the user
+	 * str|StateProvince|req : State/Province of the user
+	 * str|Zip|req 			: Zip/Postal code of the user
+	 * str|Country|req 		: Two letter country code of the user
+	 * str|EmailAddress|req 	: Email address of the user
+	 * str|Phone|req 		: Phone number in the format +NNN.NNNNNNNNNN
 	 *
-	 * @param str|JobTitle|opt 		: Job designation of the user
-	 * @param str|Organization|opt 	: Organization of the user
-	 * @param str|Address2|opt 		: StreetAddress2 of the user
-	 * @param str|PhoneExt|opt 		: PhoneExt of the user
-	 * @param str|Fax|opt 			: Fax number in the format +NNN.NNNNNNNNNN
+	 * str|JobTitle|opt 		: Job designation of the user
+	 * str|Organization|opt 	: Organization of the user
+	 * str|Address2|opt 		: StreetAddress2 of the user
+	 * str|PhoneExt|opt 		: PhoneExt of the user
+	 * str|Fax|opt 			: Fax number in the format +NNN.NNNNNNNNNN
 
 	 */
 	public function update(array $param) {
@@ -117,23 +119,23 @@ class Users extends Api {
 	}
 
 	/**
-	 * @todo Creates a request to add funds through a credit card
+	 * Creates a request to add funds through a credit card
 	 *
-	 * @param str|Username|req 		: Username to add funds to
-	 * @param str|PaymentType|req 	: Allowed payment value: Creditcard
-     * @param num|Amount|req  		: Amount to add
-	 * @param str|ReturnUrl|req 	: A valid URL to which the user should be redirected once payment is complete
+	 * @param $username str|Username|req 		: Username to add funds to
+	 * @param $paymentType str|PaymentType|req 	: Allowed payment value: Creditcard
+     * @param $amount num|Amount|req  		: Amount to add
+	 * @param $returnUrl str|ReturnUrl|req 	: A valid URL to which the user should be redirected once payment is complete
 	 
-	 * ### 3 steps to adding funds:
-		#### Step 1: Make your application call namecheap.users.createaddfundsrequest command (as shown in the example request given below).
+	 * # 3 steps to adding funds:
+	 * Step 1: Make your application call namecheap.users.createaddfundsrequest command (as shown in the example request given below).
 
-		#### Step 2: If your API call is executed successfully, you will see an XML response with Tokenid, ReturnURL and RedirectURL (as shown in the example response given below).
+	 * Step 2: If your API call is executed successfully, you will see an XML response with Tokenid, ReturnURL and RedirectURL (as shown in the example response given below).
 
-		A Tokenid is a unique alphanumeric value. The Tokenid can be used to find out if funds were added successfully or if there was an error adding funds. The RedirectURL should be used to submit credit card details.
+	 * A Tokenid is a unique alphanumeric value. The Tokenid can be used to find out if funds were added successfully or if there was an error adding funds. The RedirectURL should be used to submit credit card details.
 
-		#### Step 3: Make your application to programmatically redirect customer to the RedirectURL so that the customer can submit credit card details.
+	 * Step 3: Make your application to programmatically redirect customer to the RedirectURL so that the customer can submit credit card details.
 
-		Once payment is processed, you will be automatically redirected to the URL you've specified in the createaddfundsrequest call.
+	 *	Once payment is processed, you will be automatically redirected to the URL you've specified in the createaddfundsrequest call.
 	 */
 	public function createaddfundsrequest($username, $paymentType, $amount, $returnUrl) {
 		$this->userName = null; // make the user name null by default
@@ -147,38 +149,38 @@ class Users extends Api {
 	}
 
 	/**
-	 * @todo Gets the status of add funds request.
+	 * Gets the status of add funds request.
 	 *
-	 * @param str|TokenId|req : The Unique ID that you received after calling namecheap.users.createaddfundsrequest method
+	 * @param $tokenId str|TokenId|req : The Unique ID that you received after calling namecheap.users.createaddfundsrequest method
 	 */
 	public function getAddFundsStatus($tokenId) {
 		return $this->get($this->command.__FUNCTION__, ['TokenId' => $tokenId]);
 	}
 
 	/**
-	 * @todo Creates a new account at NameCheap under this ApiUser.
+	 * Creates a new account at NameCheap under this ApiUser.
 	 *
+	 * @param $param array
+	 * str|NewUserName|req : Username for the new user account
+	 * str|NewUserPassword|req : Password for the new user account
+	 * str|EmailAddress|req : Email address of the user
+	 * str|FirstName|req : First name of the user
+	 * str|LastName|req : Last name of the user 
+	 * num|AcceptTerms|req : Terms of agreement. The Value should be 1 for user account creation. Default Value: 1
+	 * str|Address1|req : StreetAddress1 of the user
+	 * str|City|req : City of the user
+	 * str|StateProvince|req : State/Province of the user
+	 * str|Zip|req : Zip/Postal code of the user
+	 * str|Country|req : Two letter country code of the user
+	 * str|Phone|req : Phone number in the format +NNN.NNNNNNNNNN
 	 *
-	 * @param str|NewUserName|req : Username for the new user account
-	 * @param str|NewUserPassword|req : Password for the new user account
-	 * @param str|EmailAddress|req : Email address of the user
-	 * @param str|FirstName|req : First name of the user
-	 * @param str|LastName|req : Last name of the user 
-	 * @param num|AcceptTerms|req : Terms of agreement. The Value should be 1 for user account creation. Default Value: 1
-	 * @param str|Address1|req : StreetAddress1 of the user
-	 * @param str|City|req : City of the user
-	 * @param str|StateProvince|req : State/Province of the user
-	 * @param str|Zip|req : Zip/Postal code of the user
-	 * @param str|Country|req : Two letter country code of the user
-	 * @param str|Phone|req : Phone number in the format +NNN.NNNNNNNNNN
-	 *
-	 * @param str|IgnoreDuplicateEmailAddress|opt : By default, it ignores to check if the email address is already in use. Default Value: Yes
-	 * @param num|AcceptNews|opt : Possible values are 0 and 1. Value should be 1 if the user wants to recieve newsletters else it should be 0.
-	 * @param str|JobTitle|opt : Job designation of the user
-	 * @param str|Organization|opt : Organization of the user
-	 * @param str|Address2|opt : StreetAddress2 of the user
-	 * @param str|PhoneExt|opt : PhoneExt of the user
-	 * @param str|Fax|opt : Fax number in the format +NNN.NNNNNNNNNN
+	 * str|IgnoreDuplicateEmailAddress|opt : By default, it ignores to check if the email address is already in use. Default Value: Yes
+	 * num|AcceptNews|opt : Possible values are 0 and 1. Value should be 1 if the user wants to recieve newsletters else it should be 0.
+	 * str|JobTitle|opt : Job designation of the user
+	 * str|Organization|opt : Organization of the user
+	 * str|Address2|opt : StreetAddress2 of the user
+	 * str|PhoneExt|opt : PhoneExt of the user
+	 * str|Fax|opt : Fax number in the format +NNN.NNNNNNNNNN
 	 */
 	public function create(array $param) {
 		$requiredParams = ['NewUserName', 'NewUserPassword', 'EmailAddress', 'FirstName', 'LastName', 'AcceptTerms', 'Address1', 'City', 'StateProvince', 'Zip', 'Country', 'Phone'];
@@ -216,25 +218,25 @@ class Users extends Api {
 	}
 
 	/**
-	 * @todo Validates the username and password of user accounts you have created using the API command namecheap.users.create.
+	 * Validates the username and password of user accounts you have created using the API command namecheap.users.create.
 	 * @note : You cannot use this command to validate user accounts created directly at namecheap.com
 	 * @IMPORTANT NOTE: Use the global parameter UserName to specify the username of the user account.
 	 *
-	 * @param str|Password|req : Password of the user account
+	 * @param $password str|Password|req : Password of the user account
 	 */
 	public function login($password) {
 		return $this->get($this->command.__FUNCTION__, ['Password' => $password]);
 	}
 
 	/**
-	 * @todo When you call this API, a link to reset password will be emailed to the end user's profile email id.The end user needs to click on the link to reset password.
+	 * When you call this API, a link to reset password will be emailed to the end user's profile email id.The end user needs to click on the link to reset password.
 	 * @note : UserName should be omitted for this API call.All other Global parameters must be included.
 	 *
-	 * @param str|FindBy|req : Possible values:EMAILADDRESS, DOMAINNAME,USERNAME
-	 * @param str|FindByValue|req : The username/email address/domain of the user
-	 * @param str|EmailFromName|opt : Enter a different value to overwrite the default value - Default Value: namecheap.com
-	 * @param str|EmailFrom|opt : Enter a different value to overwrite the default value - Default Value: support@namecheap.com
-	 * @param str|URLPattern|opt : Enter a different URL to overwrite namecheap.com. Refer Example Request#2 - Default Value: http://namecheap.com [RESETCODE]
+	 * @param $findBy str|FindBy|req : Possible values:EMAILADDRESS, DOMAINNAME,USERNAME
+	 * @param $findByValue str|FindByValue|req : The username/email address/domain of the user
+	 * @param $emailFromName str|EmailFromName|opt : Enter a different value to overwrite the default value - Default Value: namecheap.com
+	 * @param $emailFrom str|EmailFrom|opt : Enter a different value to overwrite the default value - Default Value: support@namecheap.com
+	 * @param $uRLPattern str|URLPattern|opt : Enter a different URL to overwrite namecheap.com. Refer Example Request#2 - Default Value: http://namecheap.com [RESETCODE]
 	 */
 	public function resetPassword($findBy='EMAILADDRESS', $findByValue, $emailFromName=null, $emailFrom=null, $uRLPattern=null) {
 		$this->userName = null; // UserName should be omitted for this API call.All other Global parameters must be included.
