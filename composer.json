@@ -8,6 +8,10 @@
         {
             "name": "Saddam Hossain",
             "email": "saddamrhossain@gmail.com"
+        },
+        {
+            "name": "Rubens Rocha",
+            "email": "smartyscripts@gmail.com"
         }
     ],
     "autoload": {
